@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div>{{ msg }}</div>
+    {% endfor %}
+
+    <form action="/login" method="post" class="form-contact">
+{{ form.hidden_tag() }}
+
+{% for field in form if field.name not in ['csrf_token', 'submit', 'remember'] -%}
+	<p>{{ field.label() }}
+	{% if field.errors %}
+		{{ field(class="invalid") }}
+	<span class="invalid-feedback">
+		{% for e in field.errors %}
+		{{ e }}
+		{% endfor %}
+	</span>
+	{% else %}
+		{{ field() }}
+	{% endif %}
+{% endfor %}
+<p>{{ form.remember.label() }} {{ form.remember() }}
+<p>{{ form.submit() }}
+</form>
+
+
+
+{% endblock %}

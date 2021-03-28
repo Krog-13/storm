@@ -1,0 +1,5 @@
+api_key.py
+__pycache__/
+.idea
+venv
+__pycache__

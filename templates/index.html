@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4 align="right" style="margin: 10px">You are: {{ list }}</h4>
+<ul class="list-posts">
+{% for p in city %}
+<li>
+    <h2>***</h2>
+    <p class="title"><a href="{{ url_for('showPost', alias=p.url)}}">{{p.name_city}}</a></p>
+    <p class="annonce">{{ p.title[:50] | striptags  }}</p>
+</li>
+{% endfor %}
+</ul>
+
+
+    </ul>
+{% endblock %}

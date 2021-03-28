@@ -1,0 +1,44 @@
+ {% extends 'base.html' %}
+{% block login %}
+
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+
+<div class="content">
+
+
+    <div calss="weather">
+
+    <h4>Weather  {{ town.name_city }}</h4>
+    <h3>{{ town.title }}</h3>
+<td>
+    <ul>
+        <li> Temp: {{ weather[0] }}</li>
+        <li> Pop: {{ weather[1] }}</li>
+        <li> Ph: {{ weather[2] }}</li>
+        <li> Date: {{ weather[3] }}</li>
+        <li> Pres: {{ weather[4] }}</li>
+    </ul>
+</td>
+    </div>
+
+        <div class="login">
+        <table border="0" class="profile-table">
+	<td valign="top" class="profile-panel">
+		<p><a href="{{url_for('logout')}}">Log Out</a>
+		<ul class="profile-info">
+		<li>Email: {{ current_user.getEmail() }}</li>
+		</ul>
+	</td></tr>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

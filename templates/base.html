@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<body>
+
+	{%- block mainmenu -%}
+<ul class="mainmenu">
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('register') }}">Register</a></li>
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+    {% block login %}
+    {% endblock %}
+</ul>
+	{% endblock mainmenu -%}
+
+{% block content %}
+{% endblock %}
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer_inner">
+            <h4 class="footer_title">Copyrate</h4>
+            <address class="footer_address">
+                <p style="margin: 0">@arman_95</p>
+                <p style="margin: 0">www.krog_13.com</p>
+            </address>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
