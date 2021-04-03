@@ -63,6 +63,7 @@ def load_user(user_id):
 @app.route("/")
 def index():
     info = 'Goust'
+    city = []
     try:
         city = City.query.all()
     except:
@@ -140,4 +141,4 @@ def showPost(alias):
 
 if __name__ == "__main__":
     print('start')
-    app.run(debug=True)
+    app.run(debug=False)
