@@ -7,6 +7,7 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import LoginForm, RegisterForm
 from UserLogin import UserLogin
+from flask_socketio import SocketIO
 
 #SECRET_KEY = os.urandom()
 SECRET_KEY = 'fdgfh78@#5?>gfhf89dx,v06k'
@@ -14,7 +15,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blogg.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = SECRET_KEY
-
+socketio = SocketIO(app)
 db = SQLAlchemy(app)
 
 login_manager = LoginManager(app)
@@ -141,4 +142,6 @@ def showPost(alias):
 
 if __name__ == "__main__":
     print('start')
-    app.run(debug=False)
+#    port = int(os.environ.get('PORT', 5000))
+#    socketio.run(app, host="127.0.0.1", port=port)
+    app.run(host="0.0.0.0", port=os.getenv('PORT'))
