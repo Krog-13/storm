@@ -27,7 +27,7 @@ def send_weather(day, town='Astana'):
     rh - average relative humidity
     '''
     weather = city(town)
-    weather_param = ['temp', 'pop', 'rh', 'valid_date', 'pres']
+    weather_param = ['temp', 'pop', 'rh', 'valid_date','uv', 'pres']
     weather_data = []
     for param in weather_param:
         weather_data.append(str(weather['data'][day][param]))

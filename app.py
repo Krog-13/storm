@@ -63,10 +63,11 @@ def load_user(user_id):
 @app.route("/")
 def index():
     info = 'Goust'
+    city = []
     try:
         city = City.query.all()
-    except:
-        print('error db')
+    except Exception as error:
+        print('error db', error)
     finally:
         if current_user.is_authenticated:
             info = current_user.getEmail()
